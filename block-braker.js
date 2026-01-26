@@ -20,6 +20,8 @@ class Game {
         screen.screenColouring();
         paddle.movePaddle();
         paddle.drawPaddle();
+        ball.moveBall();
+        ball.drawBall();
         requestAnimationFrame(() => {this.render()}) 
     }
 }
