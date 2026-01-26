@@ -55,11 +55,12 @@ class Paddle extends Game {
 
 class Ball extends Game {
     constructor(x, y, radio, velX, velY, colour, start){
-        super(x, y, colour);
+        super(x, y);
         this.radio = radio;
         this.velX = velX;
         this.velY = velY;
         this.start = start;
+        this.colour = colour;
         document.addEventListener ("keydown", (w) => {
             if(w.key === "w") this.start = true
         })
@@ -73,10 +74,13 @@ class Ball extends Game {
             if(this.x + this.radio + this.velX >= 800 || this.x - this.radio + this.velX <= 0) {
                 this.velX = -this.velX;
             } else {this.x += this.velX};
-
             if(this.y + this.radio + this.velY >= 800 || this.y - this.radio + this.velY <= 0) {
                 this.velY = -this.velY
-            } else {this.y += this.velY}
+            } else {this.y += this.velY} 
+        }
+
+        if(this.start = false){
+            
         }
     }
 
@@ -92,21 +96,20 @@ class Ball extends Game {
 class Screen extends Game {
     constructor(x, y, width, height, colour){
         super(x, y, width, height, colour);
-    } 
+    }
 
     screenColouring(){
         ctx.fillStyle = this.colour;
         ctx.fillRect (this.x, this.y, this.width, this.height);
     }
-
 }
 
 const game = new Game ()
 
-const ball = new Ball (400, 655, 10, 10, 10, "white")
+const ball = new Ball (400, 750, 10, 3, 3, "white")
 
 const screen = new Screen(0, 0, 800, 800, "black");
 
-const paddle = new Paddle(400, 770, 20, 100, "white", 7);
+const paddle = new Paddle(350, 770, 20, 100, "white", 3);
 
 game.render();
